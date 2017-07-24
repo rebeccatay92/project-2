@@ -24,25 +24,30 @@ userSchema.pre('save', function (next) {
     if (!docs.length) {
       next()
     } else {
-      console.log('user exists: ', this.name);
+      // console.log('user exists: ', this.name);
       next(new Error("This username is already taken. Please choose another."))
     }
   })
-})
+}) // close username checking
 
-// userSchema.pre('save', function (next) {
-//   var user = this
-//
-//   //only hash the password if it has been modified or new
-//   if(!user.isModified('password')) return next()
-//
-//   //hash password
-//   bcrypt.hash(user.password, 10, function(err, hash) {
-//     if (err) return next(err)
-//     user.password = hash
-//     next()
-//   })
-// })
+userSchema.pre('save', function (next) {
+  var user = this // this keyword ==> the newUser obj instance
+  // Only hash the password if it has been modified (or is new)
+  if (!user.isModified('password')) return next()
+  // hash the password ASYNCHRONOUSLY
+  bcrypt.hash(user.password, 10, function (err, hash) {
+    if (err) return next(err)
+    // Override the cleartext password with the hashed one
+    user.password = hash
+    next() // call the save fn
+  })
+}) //close password hashing
+
+userSchema.methods.validPassword = function (givenPassword) {
+  // t/f based on the user.hashed compared with form.password
+  return bcrypt.compareSync(givenPassword, this.password)
+}
+
 const User = mongoose.model('User', userSchema)
 
 module.exports = User

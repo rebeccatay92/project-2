@@ -29,8 +29,17 @@ mongoose.connect(url, {
 // this is the express itself
 const app = express()
 
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true,
+  store: new MongoStore({
+    url: 'mongodb://localhost:27017/magicmango'
+  })
+}))
+
 //setting up passport
-const passport = require('passport')
+const passport = require('./config/passport')
 app.use(passport.initialize())
 app.use(passport.session())
 
@@ -45,18 +54,10 @@ app.use(bodyParser.json())
 
 // listen to form data submission
 app.use(bodyParser.urlencoded({extended: true}))
-app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: true,
-  store: new MongoStore({
-    url: 'mongodb://localhost:27017/magicmango'
-  })
-}))
 app.use(flash())
 
 // setup all files that the proj needs to require
-const usersRoute = require('./routes/usersRoute')
+// const usersRoute = require('./routes/usersRoute')
 const buildsRoute = require('./routes/buildsRoute')
 const authRoute = require('./routes/authRoute')
 
@@ -74,7 +75,6 @@ app.get('/', function (req, res) {
 
 // non public paths
 app.use('/users', authRoute)
-// app.use('/users', usersRoute)
 app.use('/builds', buildsRoute)
 
 // and this is opening the port

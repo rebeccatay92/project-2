@@ -2,15 +2,6 @@ const User = require('../models/User')
 const request = require('request')
 const bcrypt = require('bcrypt')
 
-function login (req, res) {
-  res.render('users/login')
-}
-
-// function register (req, res) {
-//   res.render('users/new', {
-//     flash: req.flash('Errors')
-//   })
-// }
 
 function register (req, res) {
   var newUser = new User({
@@ -22,11 +13,7 @@ function register (req, res) {
       req.flash('Errors', err.message)
       return res.redirect('/users/new')
     }
-    res.redirect('/users/profile') // redirect to
-    // res.send({
-    //   status: 'ok',
-    //   createdUser: createdUser
-    // })
+    res.redirect('/users/profile')
   })
 }
 

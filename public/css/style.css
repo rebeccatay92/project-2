@@ -1,0 +1,25 @@
+img {
+  display: inline-block;
+  width: 100px;
+  height: 60px;
+  vertical-align: top;
+}
+
+.itemImg {
+  display: inline-block;
+  width: 70px;
+  height: 50px;
+  vertical-align: top;
+}
+
+img:hover {
+  border: 2px solid white;
+}
+
+.card-content {
+  border: 2px solid black;
+}
+
+.active {
+  background: rgb(200, 200, 200);
+}

@@ -1,0 +1,45 @@
+<h1>Create your very own build</h1>
+
+<div class="columns">
+
+  <div class='column is-4 is-offset-1 card'>
+    <form action='/builds/new' method='post'>
+    <div class= 'card-content'>
+      <label class='label'>Hero</label>
+      <div class='select'>
+        <select class="heroDropdown" name="build[hero]">
+          <option value="">Hero Name</option>
+        </select>
+      </div>
+    </div>
+    <div class='card-content'>
+      <label class='label'>
+        Title
+        <input class='input' type="text" name="build[title]" value="">
+      </label>
+    </div>
+    <div class="card-content buildSection active" id="starting">
+      <label class='label'>Starting Off</label>
+    </div>
+    <div class="card-content buildSection" id="core">
+      <label class='label'>Core Items</label>
+    </div>
+    <div class="card-content buildSection" id="late">
+      <label class='label'>Late Game</label>
+    </div>
+    <div class="card-content buildSection" id="others">
+      <label class='label'>Others</label>
+    </div>
+
+    <div class="card-footer">
+      <button class='button is-primary'>Submit</button>
+    </div>
+  </form>
+
+  </div>
+
+  <div class='column is-6 card allItemsList'>
+    <h1>In order of price</h1>
+  </div>
+
+</div>

@@ -5,8 +5,8 @@ const buildSchema = new Schema({
   hero: String,
   name: {
     type: String,
-    required: [true, 'Please type your name'],
-    minlength: [5, 'Username must be at least 5 chars']
+    required: [true, 'Please enter a title for your build'],
+    minlength: [5, 'Build title needs to be at least 5 chars long']
   },
   starting: [{
     type: String

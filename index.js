@@ -10,6 +10,7 @@ const MongoStore = require('connect-mongo')(session)
 const flash = require('connect-flash')
 const bodyParser = require('body-parser')
 
+
 const url = 'mongodb://localhost:27017/magicmango'
 // const url = process.env.MLAB_URI
 
@@ -27,6 +28,11 @@ mongoose.connect(url, {
 
 // this is the express itself
 const app = express()
+
+//setting up passport
+const passport = require('passport')
+app.use(passport.initialize())
+app.use(passport.session())
 
 // set middleware
 app.use(express.static('public'))
@@ -52,6 +58,8 @@ app.use(flash())
 // setup all files that the proj needs to require
 const usersRoute = require('./routes/usersRoute')
 const buildsRoute = require('./routes/buildsRoute')
+const authRoute = require('./routes/authRoute')
+
 
 app.locals = {
   STEAM_API_KEY: process.env.STEAM_API_KEY
@@ -65,7 +73,8 @@ app.get('/', function (req, res) {
 })
 
 // non public paths
-app.use('/users', usersRoute)
+app.use('/users', authRoute)
+// app.use('/users', usersRoute)
 app.use('/builds', buildsRoute)
 
 // and this is opening the port

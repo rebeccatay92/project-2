@@ -10,18 +10,13 @@ function show (req, res) {
   res.send('Indiv builds')
 }
 
-function build (req, res) {
-  // res.send(req.body)
-  res.render('builds/new')
-}
 
-function save (req, res) {
+function create (req, res) {
   res.send(req.body)
 }
 
 module.exports = {
   showAll,
   show,
-  build,
-  save
+  create
 }

@@ -20,6 +20,10 @@ $(function () {
     })
     return caps.join(' ')
   }
+  function uncapitalize(string) {
+    var underscore = string.replace(' ', '_')
+    return underscore.toLowerCase()
+  }
   /* ----------------------------------------- */
 
   $.get(`${crossOriginUrl}${apiAllHeroesUrl}`).done(function (data) {
@@ -33,7 +37,6 @@ $(function () {
       var formattedHeroName = capitalize(heroName)
 
       $newOption = $('<option>')
-      $newOption.value = 123
       $newOption.text(formattedHeroName)
       $heroDropdown.append($newOption)
       // $newName = $('<li>')
@@ -101,4 +104,8 @@ $(function () {
       $(this).remove()
     }
   })
+
+/* ----------------------------------------- */
+  console.log('showing user builds')
+
 }) // close fn on ready

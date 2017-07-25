@@ -9,13 +9,19 @@ function showAll (req, res) {
 }
 
 function show (req, res) {
+  // res.send('testing show')
   User
-  .
-  res.render('builds/manage', {
-    user: req.user,
-    builds: req.user.builds
-  })
-}
+  .findOne({_id: req.user.id})
+  .populate('builds')
+  .exec(function (err, foundUser) {
+    if (err) throw (err)
+    // res.send(foundUser)
+    res.render('builds/manage', {
+      user: req.user,
+      builds: foundUser.builds
+    }) //close render
+  }) //close .exec
+} //close fn show
 
 function create (req, res) {
   var build = req.body.build

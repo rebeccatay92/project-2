@@ -1,1 +1,28 @@
 <h1>Manage your builds</h1>
+{{#each builds as |build|}}
+  <h1>{{build}}</h1>
+
+<div class='column is-3 is-offset-1 card'>
+  <form action='/builds/new' method='post'>
+  <div class= 'card-content'>
+    <h1>Hero</h1>
+      <h1>{{build.hero}}</h1>
+    <h1>Title</h1>
+      <h1>{{build.title}}</h1>
+  </div>
+  <div class="card-content">
+    <label class='label'>Starting Off</label>
+  </div>
+  <div class="card-content">
+    <label class='label'>Core Items</label>
+  </div>
+  <div class="card-content">
+    <label class='label'>Late Game</label>
+  </div>
+  {{!-- <div class="card-footer">
+    <button class='button is-primary'>Submit</button>
+  </div> --}}
+  </form>
+</div>
+
+{{/each}}

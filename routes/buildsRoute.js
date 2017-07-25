@@ -10,7 +10,6 @@ router.get('/', function(req, res) {
   })
 })
 
-router.get('/:hero', buildsController.showByHero)
 
 //show user's builds
 router.get('/manage', buildsController.show)
@@ -22,7 +21,7 @@ router.get('/new', function (req, res) {
   })
 })
 
-
+router.get('/:hero', buildsController.showByHero)
 
 router.post('/new', buildsController.create) //save the build created
 

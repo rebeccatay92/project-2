@@ -46,11 +46,56 @@ $(function () {
   /* ----------------------------------------- */
   $allHeroesList.on('click', 'img', function (e) {
     console.log(e.currentTarget.alt)
+    $('.buildsByHero').html("")
     // var formattedHeroName = capitalize(e.currentTarget.alt)
     // $('.heroName').text(`Builds for ${formattedHeroName}`)
 
-    $.get(`/builds/${e.currentTarget.alt}`).done(function(data) {
-      console.log(data)
+    $.get(`/builds/${e.currentTarget.alt}`).done(function (allData) {
+      allData.forEach(function (indiv) {
+        $newCard = $(`<div class="column is-3 card">`)
+        $newCardContent = $('<div class="card-content">')
+        $newCard.append($newCardContent)
+        $('.buildsByHero').append($newCard)
+
+        $newHeroName = $('<h1>')
+        $newHeroName.text(`Build title: ${indiv.title}`)
+        $newCardContent.append($newHeroName)
+
+        $newCreatorName = $('<h1>')
+        $newCreatorName.text(`Creator of this build: ${indiv.creator.name}`)
+        $newCardContent.append($newCreatorName)
+
+        $startingSection = $('<h1>')
+        $startingSection.text('Starting Off')
+        $newCardContent.append($startingSection)
+
+        indiv.starting.forEach(function (each) {
+          $newImg = $('<img class="itemImg">')
+          $newImg.attr('src', `http://cdn.dota2.com/apps/dota2/images/items/${each}_lg.png`)
+          $newCardContent.append($newImg)
+        })
+
+        $coreSection = $('<h1>')
+        $coreSection.text('Core Items')
+        $newCardContent.append($coreSection)
+
+        indiv.core.forEach(function (each) {
+          $newImg = $('<img class="itemImg">')
+          $newImg.attr('src', `http://cdn.dota2.com/apps/dota2/images/items/${each}_lg.png`)
+          $newCardContent.append($newImg)
+        })
+
+        $lateSection = $('<h1>')
+        $lateSection.text('Late Game')
+        $newCardContent.append($lateSection)
+
+        indiv.late.forEach(function (each) {
+          $newImg = $('<img class="itemImg">')
+          $newImg.attr('src', `http://cdn.dota2.com/apps/dota2/images/items/${each}_lg.png`)
+          $newCardContent.append($newImg)
+        })
+
+      })
     })
   })
   /* ----------------------------------------- */

@@ -1,30 +1,23 @@
-<h1>Manage your builds</h1>
 <div class='columns is-multiline'>
   {{#each builds as |build|}}
 <div class='column is-3 card'>
-  <div class= 'card-content'>
+  <div class="card-content">
     <h1 class='title is-5'>Hero: {{build.hero}}</h1>
     <h1 class='title is-5'>Title: {{build.title}}</h1>
-  </div>
-  <div class="card-content">
     <h1 class='title is-5'>Starting Off</h1>
     {{#each build.starting as |starting|}}
       {{!-- <p>{{starting}}</p> --}}
       <img class='itemImg' src="http://cdn.dota2.com/apps/dota2/images/items/{{starting}}_lg.png">
     {{/each}}
-  </div>
-  <div class="card-content">
     <h1 class='title is-5'>Core Items</h1>
     {{#each build.core as |core|}}
-      {{!-- <p>{{core}}</p> --}}
-      <img class='itemImg' src="http://cdn.dota2.com/apps/dota2/images/items/{{core}}_lg.png">
+    {{!-- <p>{{core}}</p> --}}
+    <img class='itemImg' src="http://cdn.dota2.com/apps/dota2/images/items/{{core}}_lg.png">
     {{/each}}
-  </div>
-  <div class="card-content">
     <h1 class='title is-5'>Late Game</h1>
     {{#each build.late as |late|}}
-      {{!-- <p>{{late}}</p> --}}
-      <img class='itemImg' src="http://cdn.dota2.com/apps/dota2/images/items/{{late}}_lg.png">
+    {{!-- <p>{{late}}</p> --}}
+    <img class='itemImg' src="http://cdn.dota2.com/apps/dota2/images/items/{{late}}_lg.png">
     {{/each}}
   </div>
 </div>

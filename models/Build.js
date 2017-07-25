@@ -16,9 +16,6 @@ const buildSchema = new Schema({
   }],
   late: [{
     type: String
-  }],
-  others: [{
-    type: String
   }]
 })
 

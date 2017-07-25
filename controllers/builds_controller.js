@@ -3,11 +3,15 @@ const request = require('request')
 
 
 function showAll (req,res) {
-  res.render('builds/index')
+  res.render('builds/index', {
+    user: req.user
+  })
 }
 
 function show (req, res) {
-  res.send('Indiv builds')
+  res.render('builds/manage', {
+    user: req.user
+  })
 }
 
 

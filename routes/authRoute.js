@@ -26,7 +26,9 @@ router.get('/register', function (req, res) {
 router.post('/register', authController.register)
 
 router.get('/profile', function (req, res) {
-  res.render('auth/index')
+  res.render('auth/index', {
+    user: req.user
+  })
 })
 
 // passport.authenticate(<name of the strategy>, <post auth configuration, an obj>)

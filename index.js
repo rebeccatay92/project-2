@@ -70,7 +70,9 @@ app.locals = {
 // NO REQUIRING AFTER THIS LINE
 // public paths
 app.get('/', function (req, res) {
-  res.render('index')
+  res.render('index', {
+    user: req.user
+  })
 })
 
 // non public paths

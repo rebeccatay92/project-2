@@ -11,6 +11,7 @@ $(function () {
   $allHeroesList = $('.allHeroesList')
   $heroDropdown = $('.heroDropdown')
   $allItemsList = $('.allItemsList')
+  $buildsByHero = $('.buildsByHero')
   /* ----------------------------------------- */
   function capitalize (str) {
     var split = str.split('_')
@@ -46,16 +47,23 @@ $(function () {
   /* ----------------------------------------- */
   $allHeroesList.on('click', 'img', function (e) {
     console.log(e.currentTarget.alt)
-    $('.buildsByHero').html("")
+    $buildsByHero.html('')
     // var formattedHeroName = capitalize(e.currentTarget.alt)
     // $('.heroName').text(`Builds for ${formattedHeroName}`)
 
     $.get(`/builds/${e.currentTarget.alt}`).done(function (allData) {
+      console.log(allData)
+      if (!allData.length) {
+        $('.redirectCreate').text('No builds found. Be the first to create one?')
+      } else {
+        $('.redirectCreate').text('Don\'t like what you see? Create your own build!')
+      }
+
       allData.forEach(function (indiv) {
         $newCard = $(`<div class="column is-3 card">`)
         $newCardContent = $('<div class="card-content">')
         $newCard.append($newCardContent)
-        $('.buildsByHero').append($newCard)
+        $buildsByHero.append($newCard)
 
         $newHeroName = $('<h1>')
         $newHeroName.text(`Build title: ${indiv.title}`)
@@ -94,7 +102,6 @@ $(function () {
           $newImg.attr('src', `http://cdn.dota2.com/apps/dota2/images/items/${each}_lg.png`)
           $newCardContent.append($newImg)
         })
-
       })
     })
   })

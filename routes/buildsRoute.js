@@ -10,15 +10,18 @@ router.get('/', function(req, res) {
   })
 })
 
-
-//show user's builds
-router.get('/manage', buildsController.show)
-
 //show page for creating build
 router.get('/new', function (req, res) {
   res.render('builds/new', {
     user: req.user
   })
+})
+
+//show user's builds
+router.get('/manage', buildsController.show)
+
+router.get('/destroy', function (req, res) {
+  res.send('destroy this thing!')
 })
 
 router.get('/:hero', buildsController.showByHero)

@@ -38,7 +38,7 @@ function create (req, res) {
     core: build.core,
     late: build.late
   })
-  newBuild.heroSuffix = build.hero.toLowerCase().replace(' ', '_')
+  newBuild.heroSuffix = build.hero.toLowerCase().replace(/ /g, '_')
   newBuild.creator = req.user.id // assigning current user id into creator
   newBuild.save(function (err, createdBuild) {
     if (err) throw (err)

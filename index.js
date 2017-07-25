@@ -74,6 +74,10 @@ app.get('/', function (req, res) {
     user: req.user
   })
 })
+app.get('/logout', function (req, res) {
+  req.logout()
+  res.redirect('/')
+})
 
 // non public paths
 app.use('/users', authRoute)

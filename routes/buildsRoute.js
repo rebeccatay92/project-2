@@ -4,7 +4,14 @@ const router = express.Router()
 const buildsController = require('../controllers/builds_controller')
 
 //show builds by hero
-router.get('/', buildsController.showAll)
+router.get('/', function(req, res) {
+  res.render('builds/index', {
+    user: req.user
+  })
+})
+
+router.get('/:hero', buildsController.showByHero)
+
 //show user's builds
 router.get('/manage', buildsController.show)
 
@@ -14,6 +21,9 @@ router.get('/new', function (req, res) {
     user: req.user
   })
 })
+
+
+
 router.post('/new', buildsController.create) //save the build created
 
 

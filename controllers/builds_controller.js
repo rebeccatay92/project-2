@@ -2,10 +2,16 @@ const Build = require('../models/Build')
 const User = require('../models/User')
 const request = require('request')
 
-function showAll (req, res) {
-  res.render('builds/index', {
-    user: req.user
+function showByHero (req, res) {
+  Build
+  .find({heroSuffix: req.params.hero})
+  .populate('creator')
+  .exec(function (err, foundHero) {
+    res.send(foundHero)
   })
+  // res.send({
+  //   search: req.params.hero
+  // })
 }
 
 function show (req, res) {
@@ -49,7 +55,7 @@ function create (req, res) {
 } // close fn create
 
 module.exports = {
-  showAll,
+  showByHero,
   show,
   create
 }

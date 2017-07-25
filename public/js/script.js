@@ -7,7 +7,6 @@ $(function () {
   // HERONAME_SUFFIX`
   const itemImgUrl = 'http://cdn.dota2.com/apps/dota2/images/items/'
   // ITEMNAME_SUFFIX`
-
   /* ----------------------------------------- */
   $allHeroesList = $('.allHeroesList')
   $heroDropdown = $('.heroDropdown')
@@ -19,10 +18,6 @@ $(function () {
       return (e.charAt(0).toUpperCase() + e.substring(1))
     })
     return caps.join(' ')
-  }
-  function uncapitalize(string) {
-    var underscore = string.replace(' ', '_')
-    return underscore.toLowerCase()
   }
   /* ----------------------------------------- */
 
@@ -50,9 +45,13 @@ $(function () {
   })
   /* ----------------------------------------- */
   $allHeroesList.on('click', 'img', function (e) {
-    // console.log(e.currentTarget)
-    var formattedHeroName = capitalize(e.currentTarget.alt)
-    $('.heroName').text(`Builds for ${formattedHeroName}`)
+    console.log(e.currentTarget.alt)
+    // var formattedHeroName = capitalize(e.currentTarget.alt)
+    // $('.heroName').text(`Builds for ${formattedHeroName}`)
+
+    $.get(`/builds/${e.currentTarget.alt}`).done(function(data) {
+      console.log(data)
+    })
   })
   /* ----------------------------------------- */
   // calling api for items for create page
@@ -77,7 +76,6 @@ $(function () {
 
   /* ----------------------------------------- */
   $allItemsList.on('click', 'img', function (e) {
-
     var $clicked = $(this).clone(true)
     $('.active').append($clicked)
     // console.log($('.active').attr('id'))
@@ -100,12 +98,10 @@ $(function () {
       // console.log($(this)[0].alt)
       var hiddenInputClass = '.' + $(this)[0].alt
       // console.log('input class is ', hiddenInputClass)
-      $(this).siblings(hiddenInputClass)[0].remove() //remove only 1 instance
+      $(this).siblings(hiddenInputClass)[0].remove() // remove only 1 instance
       $(this).remove()
     }
   })
 
 /* ----------------------------------------- */
-  console.log('showing user builds')
-
 }) // close fn on ready

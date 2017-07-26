@@ -3,6 +3,20 @@ const router = express.Router()
 
 const buildsController = require('../controllers/builds_controller')
 
+function authenticatedUser(req, res, next) {
+  if (req.isAuthenticated()) return next();
+  // Otherwise
+  req.flash('errorMessage', 'Login to access!');
+  return res.redirect('/users/login');
+}
+
+function unAuthenticatedUser(req, res, next) {
+  if (!req.isAuthenticated()) return next();
+  // Otherwise
+  req.flash('errorMessage', 'You are already logged in!');
+  return res.redirect('/');
+}
+
 //show page with all heroes
 router.get('/', function(req, res) {
   res.render('builds/index', {
@@ -11,17 +25,17 @@ router.get('/', function(req, res) {
 })
 
 //show page for creating new build
-router.get('/new', function (req, res) {
+router.get('/new', authenticatedUser, function (req, res) {
   res.render('builds/new', {
     user: req.user
   })
 })
 
 //show all user builds
-router.get('/manage', buildsController.show)
+router.get('/manage', authenticatedUser, buildsController.show)
 
 // show page to update a specific build
-router.get('/update/:id', buildsController.showUpdate)
+router.get('/update/:id', authenticatedUser, buildsController.showUpdate)
 
 // show builds filtered by hero
 router.get('/:hero', buildsController.showByHero)

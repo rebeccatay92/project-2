@@ -5,14 +5,26 @@ const authController = require('../controllers/auth_controller')
 const passport =
 require('../config/passport')
 
+function authenticatedUser(req, res, next) {
+  if (req.isAuthenticated()) return next();
+  // Otherwise
+  req.flash('errorMessage', 'Login to access!');
+  return res.redirect('/users/login');
+}
+
+function unAuthenticatedUser(req, res, next) {
+  if (!req.isAuthenticated()) return next();
+  // Otherwise
+  req.flash('errorMessage', 'You are already logged in!');
+  return res.redirect('/');
+}
+
+
 // path name
-router.get('/login', function (req, res) {
+router.get('/login', unAuthenticatedUser, function (req, res) {
   res.render('auth/login')
 })
 router.post('/login', function(req, res) {
-  // res.send(req.body)
-  //req.body is received correctly but passport.auth hanging
-
   passport.authenticate('local', {
     successRedirect: '/users/profile',
     failureRedirect: '/users/register'
@@ -20,12 +32,12 @@ router.post('/login', function(req, res) {
 }) //close post
 
 
-router.get('/register', function (req, res) {
+router.get('/register', unAuthenticatedUser, function (req, res) {
   res.render('auth/new') // view name
 })
 router.post('/register', authController.register)
 
-router.get('/profile', function (req, res) {
+router.get('/profile', authenticatedUser, function (req, res) {
   res.render('auth/index', {
     user: req.user
   })

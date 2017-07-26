@@ -69,12 +69,26 @@ app.locals = {
 // setup your project routes
 // NO REQUIRING AFTER THIS LINE
 // public paths
+function authenticatedUser(req, res, next) {
+  if (req.isAuthenticated()) return next();
+  // Otherwise
+  req.flash('errorMessage', 'Login to access!');
+  return res.redirect('/users/login');
+}
+
+function unAuthenticatedUser(req, res, next) {
+  if (!req.isAuthenticated()) return next();
+  // Otherwise
+  req.flash('errorMessage', 'You are already logged in!');
+  return res.redirect('/');
+}
+
 app.get('/', function (req, res) {
   res.render('index', {
     user: req.user
   })
 })
-app.get('/logout', function (req, res) {
+app.get('/logout', authenticatedUser, function (req, res) {
   req.logout()
   res.redirect('/')
 })

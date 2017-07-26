@@ -160,7 +160,7 @@ $(function () {
     if (confirm('Are you sure? Deleted builds cannot be recovered.')) {
       // console.log('going to delete')
       $.post(`/builds/manage/${e.currentTarget.id}`).done(function(data) {
-        console.log(data)
+        location.reload()
       })
     }
     // console.log(e.currentTarget.id)

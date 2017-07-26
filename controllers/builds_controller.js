@@ -57,11 +57,13 @@ function create (req, res) {
 function destroy (req, res) {
   User.findOne({_id: req.user.id}, function(err, foundUser) {
     // var index = foundUser.builds.indexOf(req.params.id)
-    // foundUser.builds.splice(index,1)
-    res.send(foundUser.builds)
+    foundUser.builds.remove(req.params.id)
+    foundUser.save()
+    // res.send(foundUser)
   })
-  // Build.remove({_id: req.params.id})
-  // res.send(req.params.id)
+  Build.remove({_id:req.params.id}, function(err, removedBuild) {
+    res.send('success')
+  })
 }
 
 module.exports = {

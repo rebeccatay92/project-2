@@ -22,7 +22,8 @@ router.get('/manage', buildsController.show)
 
 router.get('/update/:id', function (req, res) {
   res.render('builds/update', {
-    user: req.user
+    user: req.user,
+    buildId: req.params.id //passing buildid into update page
   })
 })
 

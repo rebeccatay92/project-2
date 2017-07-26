@@ -11,8 +11,7 @@ const flash = require('connect-flash')
 const bodyParser = require('body-parser')
 
 
-const url = 'mongodb://localhost:27017/magicmango'
-// const url = process.env.MLAB_URI
+const url = process.env.MLAB_URI || 'mongodb://localhost:27017/magicmango'
 
 mongoose.Promise = global.Promise
 mongoose.connect(url, {
@@ -34,7 +33,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   store: new MongoStore({
-    url: 'mongodb://localhost:27017/magicmango'
+    url: process.env.MLAB_URI
   })
 }))
 

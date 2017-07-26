@@ -20,9 +20,21 @@ router.get('/new', function (req, res) {
 //show user's builds
 router.get('/manage', buildsController.show)
 
+router.get('/update/:id', function (req, res) {
+  res.render('builds/update', {
+    user: req.user
+  })
+})
+
 router.get('/:hero', buildsController.showByHero)
 
 router.post('/new', buildsController.create) //save the build created
+
+router.post('/edit', function (req, res) {
+  var buildId = req.body.build.id
+  res.redirect(`/builds/update/${buildId}`)
+})
+
 
 router.post('/manage/:id', buildsController.destroy)
 

@@ -1,2 +1,35 @@
 <h1>This is the hidden update page, accessible only if u click edit button</h1>
-<h1>Build id is: {{buildId}}</h1>
+{{build}}
+
+<div class="columns">
+
+  <div class='column is-3 card'>
+    <form action='/builds/new' method='post'>
+    <div class= 'card-content'>
+      <label class='label'>Hero</label>
+          <option value="">{{build.hero}}</option>
+      <label class='label'>
+        Title
+        <input class='input' type="text" name="build[title]" value="{{build.title}}">
+      </label>
+    </div>
+    <div class="card-content buildSection active" id="starting">
+      <label class='label'>Starting Off</label>
+    </div>
+    <div class="card-content buildSection" id="core">
+      <label class='label'>Core Items</label>
+    </div>
+    <div class="card-content buildSection" id="late">
+      <label class='label'>Late Game</label>
+    </div>
+    <div class="card-footer">
+      <button class='button is-primary'>Update Build</button>
+    </div>
+    </form>
+  </div>
+
+  <div class='column is-9 card allItemsList'>
+    <h1>In order of price</h1>
+  </div>
+
+</div>

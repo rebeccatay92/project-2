@@ -20,12 +20,7 @@ router.get('/new', function (req, res) {
 //show user's builds
 router.get('/manage', buildsController.show)
 
-router.get('/update/:id', function (req, res) {
-  res.render('builds/update', {
-    user: req.user,
-    buildId: req.params.id //passing buildid into update page
-  })
-})
+router.get('/update/:id', buildsController.update)
 
 router.get('/:hero', buildsController.showByHero)
 

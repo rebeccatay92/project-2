@@ -20,13 +20,10 @@ router.get('/new', function (req, res) {
 //show user's builds
 router.get('/manage', buildsController.show)
 
-router.get('/destroy', function (req, res) {
-  res.send('destroy this thing!')
-})
-
 router.get('/:hero', buildsController.showByHero)
 
 router.post('/new', buildsController.create) //save the build created
 
+router.post('/manage/:id', buildsController.destroy)
 
 module.exports = router

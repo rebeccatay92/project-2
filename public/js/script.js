@@ -12,6 +12,7 @@ $(function () {
   $heroDropdown = $('.heroDropdown')
   $allItemsList = $('.allItemsList')
   $buildsByHero = $('.buildsByHero')
+  $deleteBuild = $('.deleteBuild')
   /* ----------------------------------------- */
   function capitalize (str) {
     var split = str.split('_')
@@ -52,7 +53,6 @@ $(function () {
     // $('.heroName').text(`Builds for ${formattedHeroName}`)
 
     $.get(`/builds/${e.currentTarget.alt}`).done(function (allData) {
-      console.log(allData)
       if (!allData.length) {
         $('.redirectCreate').text('No builds found. Be the first to create one?')
       } else {
@@ -156,4 +156,15 @@ $(function () {
   })
 
 /* ----------------------------------------- */
+  $deleteBuild.on('click', function(e) {
+    if (confirm('Are you sure? Deleted builds cannot be recovered.')) {
+      // console.log('going to delete')
+      $.post(`/builds/manage/${e.currentTarget.id}`).done(function(data) {
+        console.log(data)
+      })
+    }
+    // console.log(e.currentTarget.id)
+
+  })
+
 }) // close fn on ready

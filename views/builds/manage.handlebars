@@ -20,10 +20,13 @@
     <img class='itemImg' src="http://cdn.dota2.com/apps/dota2/images/items/{{late}}_lg.png">
     {{/each}}
   </div>
-  <footer class="card-footer">
-    <a class="card-footer-item">Edit</a>
-    <a class="card-footer-item" href='/builds/destroy'>Delete</a>
-  </footer>
+
+  <button class='button is-info'>Edit</a>
+    {{!-- <form class="" action="/builds/destroy" method="post">
+      <input type="hidden" name="build[id]" value="12345"> --}}
+      <button class='button is-danger deleteBuild' id=`{{build.id}}`>Delete</button>
+    {{!-- </form> --}}
+
 </div>
 {{/each}}
 </div>

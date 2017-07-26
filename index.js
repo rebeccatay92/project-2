@@ -83,9 +83,15 @@ function unAuthenticatedUser(req, res, next) {
   return res.redirect('/');
 }
 
+//letting req.user be global
+app.use(function(req, res, next) {
+  global.user = req.user;
+  next()
+})
+
 app.get('/', function (req, res) {
   res.render('index', {
-    user: req.user
+    user: user
   })
 })
 app.get('/logout', authenticatedUser, function (req, res) {

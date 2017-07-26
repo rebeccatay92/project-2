@@ -18,21 +18,21 @@
           <div class="navbar-start">
             <a class="navbar-item" href='/'>Homepage</a>
             <a class="navbar-item" href="/builds">Browse All Builds</a>
-            {{!-- {{#if user}} --}}
+            {{#if user}}
             <a class="navbar-item" href='/builds/manage'>Manage Your Builds</a>
             <a class="navbar-item" href="/builds/new">Create A Build</a>
             <a class="navbar-item" href="/users/profile">Profile</a>
-            {{!-- {{/if}} --}}
+            {{/if}}
           </div>
           <div class="navbar-end">
-            {{!-- {{#unless user}} --}}
+            {{#unless user}}
             <a class="navbar-item" href="/users/login">Log In</a>
             <a class="navbar-item" href="/users/register">Sign Up</a>
-            {{!-- {{/unless}} --}}
+            {{/unless}}
 
-            {{!-- {{#if user}} --}}
+            {{#if user}}
             <a class='navbar-item' href='/logout'>Log Out</a>
-            {{!-- {{/if}} --}}
+            {{/if}}
           </div>
         </div>
         </nav>

@@ -1,9 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const authController = require('../controllers/auth_controller')
-
-const passport =
-require('../config/passport')
+const passport = require('../config/passport')
 
 function authenticatedUser(req, res, next) {
   if (req.isAuthenticated()) return next();
@@ -39,7 +37,7 @@ router.post('/register', authController.register)
 
 router.get('/profile', authenticatedUser, function (req, res) {
   res.render('auth/index', {
-    user: req.user
+    user: user
   })
 })
 

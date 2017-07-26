@@ -20,14 +20,14 @@ function unAuthenticatedUser(req, res, next) {
 //show page with all heroes
 router.get('/', function(req, res) {
   res.render('builds/index', {
-    user: req.user
+    user: user
   })
 })
 
 //show page for creating new build
 router.get('/new', authenticatedUser, function (req, res) {
   res.render('builds/new', {
-    user: req.user
+    user: user
   })
 })
 

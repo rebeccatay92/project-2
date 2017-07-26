@@ -10,21 +10,18 @@ function showByHero (req, res) {
     if (err) res.send(err)
     res.send(foundHero)
   })
-  // res.send({
-  //   search: req.params.hero
-  // })
 }
 
 function show (req, res) {
   // res.send('testing show')
   User
-  .findOne({_id: req.user.id})
+  .findOne({_id: user.id})
   .populate('builds')
   .exec(function (err, foundUser) {
     if (err) res.send(err)
     // res.send(foundUser)
     res.render('builds/manage', {
-      user: req.user,
+      user: user,
       builds: foundUser.builds
     }) // close render
   }) // close .exec
@@ -40,10 +37,10 @@ function create (req, res) {
     late: build.late
   })
   newBuild.heroSuffix = build.hero.toLowerCase().replace(/ /g, '_')
-  newBuild.creator = req.user.id // assigning current user id into creator
+  newBuild.creator = user.id // assigning current user id into creator
   newBuild.save(function (err, createdBuild) {
     if (err) res.send(err)
-    User.findOne({_id: req.user._id}, function (err, foundUser) {
+    User.findOne({_id: user._id}, function (err, foundUser) {
       if (err) res.send(err)
       foundUser.builds.push(createdBuild.id)
       foundUser.save(function (err, savedUser) {
@@ -56,7 +53,7 @@ function create (req, res) {
 } // close fn create
 
 function destroy (req, res) {
-  User.findOne({_id: req.user.id}, function (err, foundUser) {
+  User.findOne({_id: user.id}, function (err, foundUser) {
     if (err) return res.send(err)
     // var index = foundUser.builds.indexOf(req.params.id)
     foundUser.builds.remove(req.params.id)
@@ -73,7 +70,7 @@ function showUpdate (req, res) {
   Build.findOne({_id: buildId}, function (err, foundBuild) {
     if (err) return res.send(err)
     res.render('builds/update', {
-      user: req.user,
+      user: user,
       buildId: req.params.id,
       build: foundBuild // passing buildid into update page
     })

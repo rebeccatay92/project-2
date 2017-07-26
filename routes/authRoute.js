@@ -24,7 +24,7 @@ router.get('/login', unAuthenticatedUser, function (req, res) {
 })
 router.post('/login', function(req, res) {
   passport.authenticate('local', {
-    successRedirect: '/users/profile',
+    successRedirect: '/builds/manage',
     failureRedirect: '/users/register'
   })(req,res) // close authenticate
 }) //close post
@@ -34,12 +34,6 @@ router.get('/register', unAuthenticatedUser, function (req, res) {
   res.render('auth/new') // view name
 })
 router.post('/register', authController.register)
-
-router.get('/profile', authenticatedUser, function (req, res) {
-  res.render('auth/index', {
-    user: user
-  })
-})
 
 // passport.authenticate(<name of the strategy>, <post auth configuration, an obj>)
 

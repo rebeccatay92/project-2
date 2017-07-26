@@ -1,6 +1,3 @@
-<h1>This is the hidden update page, accessible only if u click edit button</h1>
-{{build}}
-
 <div class="columns">
 
   <div class='column is-3 card'>
@@ -18,21 +15,21 @@
       <label class='label'>Starting Off</label>
       {{#each build.starting as |item|}}
         <img class="itemImg" src="http://cdn.dota2.com/apps/dota2/images/items/{{item}}_lg.png" alt={{item}}>
-        <input type="text" name="build[starting]" class={{item}} value={{item}}>
+        <input type="hidden" name="build[starting]" class={{item}} value={{item}}>
       {{/each}}
     </div>
     <div class="card-content buildSection" id="core">
       <label class='label'>Core Items</label>
       {{#each build.core as |item|}}
         <img class="itemImg" src="http://cdn.dota2.com/apps/dota2/images/items/{{item}}_lg.png" alt={{item}}>
-        <input type="text" name="build[core]" class={{item}} value={{item}}>
+        <input type="hidden" name="build[core]" class={{item}} value={{item}}>
       {{/each}}
     </div>
     <div class="card-content buildSection" id="late">
       <label class='label'>Late Game</label>
       {{#each build.late as |item|}}
         <img class="itemImg" src="http://cdn.dota2.com/apps/dota2/images/items/{{item}}_lg.png" alt={{item}}>
-        <input type="text" name="build[late]" class={{item}} value={{item}}>
+        <input type="hidden" name="build[late]" class={{item}} value={{item}}>
       {{/each}}
     </div>
     <div class="card-footer">

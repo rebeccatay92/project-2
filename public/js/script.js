@@ -132,7 +132,7 @@ $(function () {
     $('.active').append($clicked)
     // console.log($('.active').attr('id'))
     var sectionId = $('.active').attr('id')
-    $newInput = $('<input type="text" value="">')
+    $newInput = $('<input type="hidden" value="">')
     $newInput.attr('name', `build[${sectionId}]`)
     $newInput.attr('value', e.target.alt)
     $newInput.addClass(e.target.alt)

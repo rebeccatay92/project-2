@@ -4,7 +4,8 @@
 <div class="columns">
 
   <div class='column is-3 card'>
-    <form action='/builds/new' method='post'>
+    <form action='/builds/update' method='post'>
+      <input type="hidden" name="build[id]" value={{build.id}}>
     <div class= 'card-content'>
       <label class='label'>Hero</label>
           <option value="">{{build.hero}}</option>

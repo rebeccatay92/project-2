@@ -15,12 +15,24 @@
     </div>
     <div class="card-content buildSection active" id="starting">
       <label class='label'>Starting Off</label>
+      {{#each build.starting as |item|}}
+        <img class="itemImg" src="http://cdn.dota2.com/apps/dota2/images/items/{{item}}_lg.png" alt={{item}}>
+        <input type="text" name="build[starting]" class={{item}} value={{item}}>
+      {{/each}}
     </div>
     <div class="card-content buildSection" id="core">
       <label class='label'>Core Items</label>
+      {{#each build.core as |item|}}
+        <img class="itemImg" src="http://cdn.dota2.com/apps/dota2/images/items/{{item}}_lg.png" alt={{item}}>
+        <input type="text" name="build[core]" class={{item}} value={{item}}>
+      {{/each}}
     </div>
     <div class="card-content buildSection" id="late">
       <label class='label'>Late Game</label>
+      {{#each build.late as |item|}}
+        <img class="itemImg" src="http://cdn.dota2.com/apps/dota2/images/items/{{item}}_lg.png" alt={{item}}>
+        <input type="text" name="build[late]" class={{item}} value={{item}}>
+      {{/each}}
     </div>
     <div class="card-footer">
       <button class='button is-primary'>Update Build</button>

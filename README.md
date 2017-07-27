@@ -22,11 +22,12 @@ Wireframes
 ![Homepage and Login]()
 
 ![Viewing builds and creating new builds]()
+In the view by heroes page, the user should be able to click on a specific hero and see builds from all users for that particular hero.
+When creating a new build, users will select their hero from a dropdown, give their build a title, and add items by clicking on pictures of the items.
 
 Models
 ==================================
-
-
+![ERD] (https://github.com/rebeccatay92/project-2/blob/master/imgs/ERD.png)
 Accessing the DOTA2 API
 ==================================
 The DOTA2 API is available for free use. To acquire an API key, go to the Steam Community API key registration page at: https://steamcommunity.com/login/home/?goto=%2Fdev%2Fapikey

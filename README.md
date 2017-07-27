@@ -2,9 +2,13 @@ Magic Mango --- DOTA 2 Hero Builds
 ==================================
 DOTA 2 is a popular game with a complicated character equipment system.
 
-In the heat of battle, thinking of the next item to buy can be troublesome. Most players thus follow specific builds depending on the situation.
+In the heat of battle, taking time to go through the shop and thinking of what to buy next has been deadly for many a new player. Most players thus look up strategies and builds online, and follow specific cookie-cutter builds depending on the in-game situation.
 
-Taking inspiration from sites like https://www.dotabuff.com and https://www.dotafire.com, this site is to provide a place for users to create and save hero builds.
+Taking inspiration from sites like https://www.dotafire.com, this site provides a place for users to create and save hero builds for their reference.
+
+Screenshot from DotaFire:
+
+![dotafire](https://github.com/rebeccatay92/project-2/blob/master/imgs/dotafire.jpg)
 
 Live Links
 ==================================
@@ -41,7 +45,7 @@ Wireframes
 
 Models
 ==================================
-![ERD] (https://github.com/rebeccatay92/project-2/blob/master/imgs/ERD.png)
+![ERD](https://github.com/rebeccatay92/project-2/blob/master/imgs/ERD.png)
 
 There will be two models: User and Build. User can have zero or many builds. Each Build can only belong to one user (it's creator).
 
@@ -54,9 +58,9 @@ A Steam account is required to obtain an API key.
 
 Complete documentation on the API is available at: https://dota2api.readthedocs.io/en/latest/
 
-We will be requiring API responses for hero and item details, and extracting the hero/item name and images.
+We will be requiring API responses for hero and item details, which contain hero/item names and images.
 
-Returns a JSON object with all heros currently available
+Returns a JSON object with all heroes currently available
 https://api.steampowered.com/IEconDOTA2_570/GetHeroes/v0001/?key=APIKEY
 http://cdn.dota2.com/apps/dota2/images/heroes/HERONAME_lg.png
 

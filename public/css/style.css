@@ -1,3 +1,7 @@
+.navbar {
+  background: rgba(0,0,0,0.2);
+}
+
 img {
   display: inline-block;
   width: 100px;
@@ -29,3 +33,25 @@ img:hover {
   height: 100px;
   display: none
 }
+
+.homepage {
+  background-image: url('http://i.imgur.com/0uueOOL.jpg');
+  background-size: cover;
+}
+
+.homepage h1 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 10rem;
+  font-weight: bold;
+  z-index: 1;
+  color: white;
+  margin: 0 auto;
+}
+/*.homepage h2 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 4rem;
+  font-weight: bold;
+  z-index: 1;
+  color: white;
+  margin: 0 auto;
+}*/

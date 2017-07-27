@@ -23,3 +23,9 @@ img:hover {
 .active {
   background: rgb(200, 200, 200);
 }
+
+.loading {
+  width: 100px;
+  height: 100px;
+  display: none
+}

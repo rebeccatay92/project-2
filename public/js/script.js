@@ -22,6 +22,14 @@ $(function () {
     return caps.join(' ')
   }
   /* ----------------------------------------- */
+  $(document).ajaxStart(function(){
+      $(".loading").css("display", "block")
+  })
+
+  $(document).ajaxComplete(function(){
+      $(".loading").css("display", "none")
+  })
+  /* ----------------------------------------- */
 
   $.get(`${crossOriginUrl}${apiAllHeroesUrl}`).done(function (data) {
     var allHeroes = data.result.heroes

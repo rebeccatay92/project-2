@@ -8,7 +8,7 @@ Taking inspiration from sites like https://www.dotafire.com, this site provides 
 
 Screenshot from DotaFire:
 
-![dotafire](https://github.com/rebeccatay92/project-2/blob/master/imgs/dotafire.jpg)
+![dotafire](https://github.com/rebeccatay92/project-2/blob/master/imgs/dotafire.png)
 
 Live Links
 ==================================
@@ -18,24 +18,31 @@ Site: https://magicmango.herokuapp.com/
 
 Setting up
 ==================================
+Fork and clone
+
+Install dependencies listed in `package.json`
+
+Create `.env` file and fill in keys based on `.env-sample` file provided
+
+Steam API key can be obtained for free --- see further down
 
 User Stories
 ==================================
-All visitors to the site can access the homepage and 'view by heroes' page.
+* All visitors to the site can access the homepage and 'view by heroes' page.
 
-Only logged in users can view the pages for 'saved builds', 'creating new builds' and 'update build'.
+* Only logged in users can view the pages for 'saved builds', 'creating new builds' and 'update build'.
 
-In the view by heroes page, the user should be able to click on a specific hero and see builds from all users for that particular hero.
+* In the view by heroes page, the user should be able to click on a specific hero and see builds from all users for that particular hero.
 
-When creating a new build, users will select their hero from a dropdown, give their build a title, and add items by clicking on pictures of the items.
+* When creating a new build, users will select their hero from a dropdown, give their build a title, and add items by clicking on pictures of the items.
 
-In the 'manage builds' page, users will be able to see all builds that they have created and saved. Each build will have edit and delete buttons.
+* In the 'manage builds' page, users will be able to see all builds that they have created and saved. Each build will have edit and delete buttons.
 
-Users can delete builds just by clicking on the delete. Users will be asked to confirm deletion.
+* Users can delete builds just by clicking on the delete. Users will be asked to confirm deletion.
 
-Users that click on the edit button will be redirected to an 'update' page. The update page cannot be accessed through the navigation bar.
+* Users that click on the edit button will be redirected to an 'update' page. The update page cannot be accessed through the navigation bar.
 
-The update page has pre-filled build data based on which build the user clicked. Hero is not editable, but title and items are.
+* The update page has pre-filled build data based on which build the user clicked. Hero is not editable, but title and items are.
 
 Wireframes
 ==================================
@@ -79,3 +86,9 @@ Basic column layout was done with Bulma. Need to fill in CSS styling
 Need to add a search function for items so users can quickly find what they need.
 
 In both view by heroes and manage pages, builds should be grouped by hero instead of displayed in the order they were created. Eg. instead of `sniper`, `crystal maiden`, `sniper`. Display all `sniper` builds together.
+
+Acknowledgements
+==================================
+Thanks for all the help from GA Instructor Prima, TA Shimei and WDI11 classmates
+
+Explanation of DOTA 2 API from http://sharonkuo.me/dota2/index.html

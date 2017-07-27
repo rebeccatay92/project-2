@@ -6,21 +6,23 @@ const passport = require('../config/passport')
 function authenticatedUser(req, res, next) {
   if (req.isAuthenticated()) return next();
   // Otherwise
-  req.flash('errorMessage', 'Login to access!');
+  req.flash('msg', 'Login to access!');
   return res.redirect('/users/login');
 }
 
 function unAuthenticatedUser(req, res, next) {
   if (!req.isAuthenticated()) return next();
   // Otherwise
-  req.flash('errorMessage', 'You are already logged in!');
+  req.flash('msg', 'You are already logged in!');
   return res.redirect('/');
 }
 
 
 // path name
 router.get('/login', unAuthenticatedUser, function (req, res) {
-  res.render('auth/login')
+  res.render('auth/login', {
+    flash: req.flash('msg')
+  })
 })
 router.post('/login', function(req, res) {
   passport.authenticate('local', {

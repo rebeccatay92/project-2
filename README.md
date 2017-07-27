@@ -1,5 +1,34 @@
-Accessing the DOTA2 API
+Magic Mango --- DOTA 2 Hero Builds
+==================================
+### Concept:
+DOTA 2 is a popular game with a complicated character equipment system.
+In the heat of battle, thinking of the next item to buy can be troublesome.
+Most players thus follow specific builds depending on the situation.
+Taking inspiration from sites like [www.dotabuff.com] and [www.dotafire.com], this site is to provide a place for users to create and save hero builds.
 
+### Features:
+
+Live Links
+==================================
+Repo: https://github.com/rebeccatay92/project-2
+
+Site: https://magicmango.herokuapp.com/
+
+Setting up
+==================================
+
+Wireframes
+==================================
+![Homepage and Login]()
+
+![Viewing builds and creating new builds]()
+
+Models
+==================================
+
+
+Accessing the DOTA2 API
+==================================
 The DOTA2 API is available for free use. To acquire an API key, go to the Steam Community API key registration page at: https://steamcommunity.com/login/home/?goto=%2Fdev%2Fapikey
 A Steam account is required to obtain an API key.
 Complete documentation on the API is available at: https://dota2api.readthedocs.io/en/latest/
@@ -18,3 +47,6 @@ http://cdn.dota2.com/apps/dota2/images/items/ITEMNAME_lg.png
 Prefixes are dropped when accessing hero and item images.
 Eg: npc_dota_hero_crystal_maiden => crystal_maiden
 Eg: item_blink => blink
+
+Issues to fix
+==================================

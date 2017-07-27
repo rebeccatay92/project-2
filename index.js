@@ -62,7 +62,7 @@ const authRoute = require('./routes/authRoute')
 
 
 app.locals = {
-  STEAM_API_KEY: process.env.STEAM_API_KEY
+  STEAM_API_KEY: process.env.STEAM_API_KEY,
 }
 
 // setup your project routes
@@ -84,13 +84,14 @@ function unAuthenticatedUser(req, res, next) {
 
 //letting req.user be global
 app.use(function(req, res, next) {
-  global.user = req.user;
+  global.user = req.user
   next()
 })
 
 app.get('/', function (req, res) {
   res.render('index', {
-    user: user
+    user: user,
+    flash: req.flash('msg')
   })
 })
 app.get('/logout', authenticatedUser, function (req, res) {

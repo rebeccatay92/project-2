@@ -25,9 +25,9 @@ img:hover {
   border: 2px solid white;
 }
 
-.card {
+/*.card {
   border: 2px solid black;
-}
+}*/
 
 .active {
   background: rgb(200, 200, 200);

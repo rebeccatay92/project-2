@@ -13,7 +13,7 @@ function authenticatedUser(req, res, next) {
 function unAuthenticatedUser(req, res, next) {
   if (!req.isAuthenticated()) return next();
   // Otherwise
-  req.flash('errorMessage', 'You are already logged in!');
+  req.flash('errorMessage', 'You are already logged in!')
   return res.redirect('/');
 }
 

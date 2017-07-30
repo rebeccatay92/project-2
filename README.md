@@ -81,11 +81,20 @@ For example, the JSON object for hero name returns `npc_dota_hero_crystal_maiden
 
 Issues to fix
 ==================================
+User signup validation. If username already exists, error is thrown and server crashes.
+
 Basic column layout was done with Bulma. Need to fill in CSS styling
 
 Need to add a search function for items so users can quickly find what they need.
 
 In both view by heroes and manage pages, builds should be grouped by hero instead of displayed in the order they were created. Eg. instead of `sniper`, `crystal maiden`, `sniper`. Display all `sniper` builds together.
+
+Add functionality to save other user's builds
+
+Built with
+==================================
+MongoDB, Express, Node, JQuery
+Bulma for CSS
 
 Acknowledgements
 ==================================

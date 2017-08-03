@@ -6,14 +6,14 @@ const buildsController = require('../controllers/builds_controller')
 function authenticatedUser(req, res, next) {
   if (req.isAuthenticated()) return next();
   // Otherwise
-  req.flash('errorMessage', 'Login to access!');
+  req.flash('plslogin', 'Login to access!');
   return res.redirect('/users/login');
 }
 
 function unAuthenticatedUser(req, res, next) {
   if (!req.isAuthenticated()) return next();
   // Otherwise
-  req.flash('errorMessage', 'You are already logged in!')
+  req.flash('alrdyloggedin', 'You are already logged in!')
   return res.redirect('/');
 }
 

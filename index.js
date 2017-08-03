@@ -71,14 +71,14 @@ app.locals = {
 function authenticatedUser(req, res, next) {
   if (req.isAuthenticated()) return next();
   // Otherwise
-  req.flash('errorMessage', 'Login to access!');
+  req.flash('plslogin', 'Login to access!');
   return res.redirect('/users/login');
 }
 
 function unAuthenticatedUser(req, res, next) {
   if (!req.isAuthenticated()) return next();
   // Otherwise
-  req.flash('errorMessage', 'You are already logged in!');
+  req.flash('alrdyloggedin', 'You are already logged in!');
   return res.redirect('/');
 }
 
@@ -91,7 +91,7 @@ app.use(function(req, res, next) {
 app.get('/', function (req, res) {
   res.render('index', {
     user: user,
-    flash: req.flash('msg')
+    message: req.flash('alrdyloggedin')
   })
 })
 app.get('/logout', authenticatedUser, function (req, res) {

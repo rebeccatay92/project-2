@@ -6,22 +6,21 @@ const passport = require('../config/passport')
 function authenticatedUser(req, res, next) {
   if (req.isAuthenticated()) return next();
   // Otherwise
-  req.flash('msg', 'Login to access!');
+  req.flash('plslogin', 'Login to access!');
   return res.redirect('/users/login');
 }
 
 function unAuthenticatedUser(req, res, next) {
   if (!req.isAuthenticated()) return next();
   // Otherwise
-  req.flash('msg', 'You are already logged in!');
+  req.flash('alrdyloggedin', 'You are already logged in!')
   return res.redirect('/');
 }
-
 
 // path name
 router.get('/login', unAuthenticatedUser, function (req, res) {
   res.render('auth/login', {
-    flash: req.flash('msg')
+    message: req.flash('plslogin')
   })
 })
 router.post('/login', function(req, res) {
@@ -33,7 +32,9 @@ router.post('/login', function(req, res) {
 
 
 router.get('/register', unAuthenticatedUser, function (req, res) {
-  res.render('auth/new') // view name
+  res.render('auth/new', {
+    message: req.flash('msg')
+  })// view name
 })
 router.post('/register', authController.register)
 

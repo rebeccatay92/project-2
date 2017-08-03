@@ -19,16 +19,16 @@ const userSchema = new Schema({
   }]
 })
 
-// userSchema.pre('save', function (next) {
-//   User.find({name: this.name}, function (err, docs) {
-//     if (!docs.length) {
-//       next()
-//     } else {
-//       // console.log('user exists: ', this.name);
-//       next(new Error("This username is already taken. Please choose another."))
-//     }
-//   })
-// }) // close username checking
+userSchema.pre('save', function (next) {
+  User.find({name: this.name}, function (err, docs) {
+    if (!docs.length) {
+      next()
+    } else {
+      // console.log('user exists: ', this.name);
+      next(new Error("This username is already taken. Please choose another."))
+    }
+  })
+}) // close username checking
 
 userSchema.pre('save', function (next) {
   var user = this // this keyword ==> the newUser obj instance

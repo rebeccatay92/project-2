@@ -7,7 +7,7 @@ function register (req, res) {
   })
   newUser.save(function (err, createdUser) {
     if (err) {
-      req.flash('msg', err)
+      req.flash('msg', err.message)
       return res.redirect('/users/register')
     }
     res.redirect('/users/login') // ~~ client req GET /profile

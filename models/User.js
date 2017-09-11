@@ -24,7 +24,6 @@ userSchema.pre('save', function (next) {
     if (!docs.length) {
       next()
     } else {
-      // console.log('user exists: ', this.name);
       next(new Error("This username is already taken. Please choose another."))
     }
   })

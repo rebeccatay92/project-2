@@ -2,7 +2,7 @@ $(function () {
   /* ----------------------------------------- */
   const apiAllHeroesUrl = `https://api.steampowered.com/IEconDOTA2_570/GetHeroes/v0001/?key=${STEAM_API_KEY}`
   const apiAllItemsUrl = `https://api.steampowered.com/IEconDOTA2_570/GetGameItems/V001/?key=${STEAM_API_KEY}`
-  const crossOriginUrl = `https://crossorigin.me/`
+  const crossOriginUrl = `http://crossorigin.me/`
   const heroImgUrl = 'http://cdn.dota2.com/apps/dota2/images/heroes/'
   // HERONAME_SUFFIX`
   const itemImgUrl = 'http://cdn.dota2.com/apps/dota2/images/items/'
@@ -33,7 +33,6 @@ $(function () {
 
   $.get(`${crossOriginUrl}${apiAllHeroesUrl}`).done(function (data) {
     var allHeroes = data.result.heroes
-    // console.log(allHeroes)
     var sortedHeroes = allHeroes.sort(function (a, b) {
       return (a.id - b.id)
     })
@@ -44,12 +43,9 @@ $(function () {
       $newOption = $('<option>')
       $newOption.text(formattedHeroName)
       $heroDropdown.append($newOption)
-      // $newName = $('<li>')
-      // $newName.text(heroName)
       $newImg = $('<img class="heroImg">')
       $newImg.attr('src', `http://cdn.dota2.com/apps/dota2/images/heroes/${heroName}_lg.png`)
       $newImg.attr('alt', `${heroName}`)
-      // $('.allHeroesList').append($newName)
       $allHeroesList.append($newImg)
     })
   })
@@ -57,8 +53,6 @@ $(function () {
   $allHeroesList.on('click', 'img', function (e) {
     console.log(e.currentTarget.alt)
     $buildsByHero.html('')
-    // var formattedHeroName = capitalize(e.currentTarget.alt)
-    // $('.heroName').text(`Builds for ${formattedHeroName}`)
 
     $.get(`/builds/${e.currentTarget.alt}`).done(function (allData) {
       if (!allData.length) {
@@ -153,12 +147,9 @@ $(function () {
   })
 
   $('.buildSection').on('click', 'img', function () {
-    // console.log($(this).parent())
     if ($(this).parent().hasClass('active')) {
-      // console.log($(this)[0].alt)
       var hiddenInputClass = '.' + $(this)[0].alt
-      // console.log('input class is ', hiddenInputClass)
-      $(this).siblings(hiddenInputClass)[0].remove() // remove only 1 instance
+      $(this).siblings(hiddenInputClass)[0].remove()
       $(this).remove()
     }
   })
@@ -166,13 +157,10 @@ $(function () {
 /* ----------------------------------------- */
   $deleteBuild.on('click', function(e) {
     if (confirm('Are you sure? Deleted builds cannot be recovered.')) {
-      // console.log('going to delete')
       $.post(`/builds/manage/${e.currentTarget.id}`).done(function(data) {
         location.reload()
       })
     }
-    // console.log(e.currentTarget.id)
-
   })
 
 }) // close fn on ready

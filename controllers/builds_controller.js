@@ -1,6 +1,6 @@
 const Build = require('../models/Build')
 const User = require('../models/User')
-// const request = require('request')
+const request = require('request')
 
 function showByHero (req, res) {
   Build
@@ -26,6 +26,7 @@ function show (req, res) {
 }
 
 function create (req, res) {
+
   var build = req.body.build
   var newBuild = new Build({
     hero: build.hero,
@@ -36,17 +37,22 @@ function create (req, res) {
   })
   newBuild.heroSuffix = build.hero.toLowerCase().replace(/ /g, '_')
   newBuild.creator = user.id
+
   newBuild.save(function (err, createdBuild) {
-    if (err) res.send(err)
-    User.findOne({_id: user._id}, function (err, foundUser) {
-      if (err) res.send(err)
+    if (err) return res.send(err)
+    User.findOne({_id: user.id}, function (err, foundUser) {
+      if (err) return res.send(err)
       foundUser.builds.push(createdBuild.id)
+      console.log('createdBuild', createdBuild)
+
       foundUser.save(function (err, savedUser) {
-        if (err) res.send(err)
+        if (err) console.log(err)
         res.redirect('/builds/manage')
       })
+
     })
   })
+
 }
 
 function destroy (req, res) {

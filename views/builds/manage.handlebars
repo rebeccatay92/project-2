@@ -7,19 +7,19 @@
   <div class="card-content">
     <h1 class='title is-5'>Hero: {{build.hero}}</h1>
     <h1 class='title is-5'>Title: {{build.title}}</h1>
+
     <h1 class='title is-5'>Starting Off</h1>
     {{#each build.starting as |starting|}}
-      {{!-- <p>{{starting}}</p> --}}
       <img class='itemImg' src="http://cdn.dota2.com/apps/dota2/images/items/{{starting}}_lg.png">
     {{/each}}
+
     <h1 class='title is-5'>Core Items</h1>
     {{#each build.core as |core|}}
-    {{!-- <p>{{core}}</p> --}}
     <img class='itemImg' src="http://cdn.dota2.com/apps/dota2/images/items/{{core}}_lg.png">
     {{/each}}
+
     <h1 class='title is-5'>Late Game</h1>
     {{#each build.late as |late|}}
-    {{!-- <p>{{late}}</p> --}}
     <img class='itemImg' src="http://cdn.dota2.com/apps/dota2/images/items/{{late}}_lg.png">
     {{/each}}
   </div>
@@ -27,9 +27,9 @@
     <form class="" action="/builds/edit" method="post">
       <input type="hidden" name="build[id]" value={{build.id}}>
       <button class='button is-info'>Edit</button>
+      <button class='button is-danger deleteBuild' id={{build.id}}>Delete</button>
     </form>
 
-    <button class='button is-danger deleteBuild' id={{build.id}}>Delete</button>
 
 </div>
 {{/each}}

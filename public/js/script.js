@@ -51,7 +51,6 @@ $(function () {
   })
   /* ----------------------------------------- */
   $allHeroesList.on('click', 'img', function (e) {
-    console.log(e.currentTarget.alt)
     $buildsByHero.html('')
 
     $.get(`/builds/${e.currentTarget.alt}`).done(function (allData) {
@@ -111,7 +110,6 @@ $(function () {
   // calling api for items for create page
   $.get(`${crossOriginUrl}${apiAllItemsUrl}`).done(function (data) {
     var allItems = data.result.items
-    // console.log(allItems)
     var filteredItems = allItems.filter(function (e) {
       return (e.name.indexOf('recipe') === -1 && e.name.indexOf('river') === -1 && e.name.indexOf('dagon_') === -1 && e.name.indexOf('tango_') === -1 && e.name.indexOf('aegis') === -1 && e.name.indexOf('cheese') === -1 && e.name.indexOf('necronomicon_') === -1 && e.name.indexOf('ward_dispenser') === -1)
     })
@@ -120,7 +118,6 @@ $(function () {
     })
     sortedItems.forEach(function (indiv) {
       var itemName = indiv.name.substring(5)
-      // console.log(itemName, indiv.cost)
       $newImg = $('<img class="itemImg">')
       $newImg.attr('src', `http://cdn.dota2.com/apps/dota2/images/items/${itemName}_lg.png`)
       $newImg.attr('alt', `${itemName}`)
@@ -132,7 +129,6 @@ $(function () {
   $allItemsList.on('click', 'img', function (e) {
     var $clicked = $(this).clone(true)
     $('.active').append($clicked)
-    // console.log($('.active').attr('id'))
     var sectionId = $('.active').attr('id')
     $newInput = $('<input type="hidden" value="">')
     $newInput.attr('name', `build[${sectionId}]`)

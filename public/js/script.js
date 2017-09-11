@@ -2,7 +2,7 @@ $(function () {
   /* ----------------------------------------- */
   const apiAllHeroesUrl = `https://api.steampowered.com/IEconDOTA2_570/GetHeroes/v0001/?key=${STEAM_API_KEY}`
   const apiAllItemsUrl = `https://api.steampowered.com/IEconDOTA2_570/GetGameItems/V001/?key=${STEAM_API_KEY}`
-  const crossOriginUrl = `http://crossorigin.me/`
+  const crossOriginUrl = `https://cors-anywhere.herokuapp.com/`
   const heroImgUrl = 'http://cdn.dota2.com/apps/dota2/images/heroes/'
   // HERONAME_SUFFIX`
   const itemImgUrl = 'http://cdn.dota2.com/apps/dota2/images/items/'

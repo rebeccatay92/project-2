@@ -3,33 +3,42 @@
 
 <div class='columns is-multiline'>
   {{#each builds as |build|}}
-<div class='column is-3 card'>
+<div class='column is-3 card managebuild'>
   <div class="card-content">
     <h1 class='title is-5'>Hero: {{build.hero}}</h1>
     <h1 class='title is-5'>Title: {{build.title}}</h1>
 
     <h1 class='title is-5'>Starting Off</h1>
+
+    <div class='itembox'>
     {{#each build.starting as |starting|}}
       <img class='itemImg' src="http://cdn.dota2.com/apps/dota2/images/items/{{starting}}_lg.png">
     {{/each}}
+    </div>
 
     <h1 class='title is-5'>Core Items</h1>
+
+    <div class='itembox'>
     {{#each build.core as |core|}}
     <img class='itemImg' src="http://cdn.dota2.com/apps/dota2/images/items/{{core}}_lg.png">
     {{/each}}
+    </div>
 
     <h1 class='title is-5'>Late Game</h1>
+    <div class='itembox'>
     {{#each build.late as |late|}}
     <img class='itemImg' src="http://cdn.dota2.com/apps/dota2/images/items/{{late}}_lg.png">
     {{/each}}
-  </div>
+    </div>
 
-    <form class="" action="/builds/edit" method="post">
+  </div>
+  <div class='card-content'>
+    <form class="is-pulled-left" action="/builds/edit" method="post">
       <input type="hidden" name="build[id]" value={{build.id}}>
       <button class='button is-info'>Edit</button>
       <button class='button is-danger deleteBuild' id={{build.id}}>Delete</button>
     </form>
-
+  </div>
 
 </div>
 {{/each}}

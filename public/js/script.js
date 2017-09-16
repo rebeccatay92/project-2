@@ -71,7 +71,7 @@ $(function () {
         $newCardContent.append($newHeroName)
 
         $newCreatorName = $('<h1>')
-        $newCreatorName.text(`Creator of this build: ${indiv.creator.name}`)
+        $newCreatorName.text(`Creator: ${indiv.creator.name}`)
         $newCardContent.append($newCreatorName)
 
         $startingSection = $('<h1>')

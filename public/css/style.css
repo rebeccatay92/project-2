@@ -25,10 +25,6 @@ img:hover {
   border: 2px solid white;
 }
 
-/*.card {
-  border: 2px solid black;
-}*/
-
 .active {
   background: rgb(200, 200, 200);
 }
@@ -51,4 +47,17 @@ img:hover {
   z-index: 1;
   color: white;
   margin: 0 auto;
+}
+
+.card-content h1 {
+  font-weight: bold;
+}
+
+.managebuild img {
+  margin-bottom: 3px;
+}
+
+.itembox {
+  vertical-align: top;
+  margin-top: -20px;
 }

@@ -110,8 +110,9 @@ $(function () {
   // calling api for items for create page
   $.get(`${crossOriginUrl}${apiAllItemsUrl}`).done(function (data) {
     var allItems = data.result.items
+    // console.log('allItems', allItems)
     var filteredItems = allItems.filter(function (e) {
-      return (e.name.indexOf('recipe') === -1 && e.name.indexOf('river') === -1 && e.name.indexOf('dagon_') === -1 && e.name.indexOf('tango_') === -1 && e.name.indexOf('aegis') === -1 && e.name.indexOf('cheese') === -1 && e.name.indexOf('necronomicon_') === -1 && e.name.indexOf('ward_dispenser') === -1)
+      return (e.name.indexOf('recipe') === -1 && e.name.indexOf('river') === -1 && e.name.indexOf('dagon_') === -1 && e.name.indexOf('tango_') === -1 && e.name.indexOf('aegis') === -1 && e.name.indexOf('cheese') === -1 && e.name.indexOf('necronomicon_') === -1 && e.name.indexOf('ward_dispenser') === -1 && e.name.indexOf('pocket_tower') === -1 && e.name.indexOf('mutation_tombstone') === -1 && e.name.indexOf('super_blink') === -1)
     })
     var sortedItems = filteredItems.sort(function (a, b) {
       return a.cost - b.cost
